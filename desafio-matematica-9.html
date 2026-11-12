@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desafio de Matemática – 9.º ano</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Patrick+Hand&display=swap">
+<style>
+:root{--bg:#f3f7fd;--grid:#d3e0f3;--ink:#1c2a66;--muted:#55628f;--card:#fff;--line:#1c2a66;--mark:#ffdf5e;--ok:#17744c;--okbg:#d8f3e5;--bad:#b82d24;--badbg:#fbe0dd;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111729;--grid:#1d2744;--ink:#e3e9ff;--muted:#9aa7d6;--card:#192242;--line:#8fa2f0;--mark:#e8c93a;--ok:#6fe0a6;--okbg:#14382a;--bad:#ff8f86;--badbg:#44201d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111729;--grid:#1d2744;--ink:#e3e9ff;--muted:#9aa7d6;--card:#192242;--line:#8fa2f0;--mark:#e8c93a;--ok:#6fe0a6;--okbg:#14382a;--bad:#ff8f86;--badbg:#44201d;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background-color:var(--bg);color:var(--ink);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:18px;line-height:1.45}
+main{max-width:46rem;margin:0 auto;padding:1.5rem 1rem 3rem}
+h1,h2,h3{font-family:"Patrick Hand","Comic Sans MS",cursive;font-weight:400;margin:0}
+h1{font-size:2.6rem;line-height:1.1}h2{font-size:1.8rem}h3{font-size:1.4rem}
+h1 span{background:linear-gradient(transparent 55%,var(--mark) 55%)}
+.sub{color:var(--muted);margin:.6rem 0 1.4rem}
+.card{background:var(--card);border:2px solid var(--line);border-radius:6px;padding:1.2rem;box-shadow:5px 5px 0 var(--line);margin-bottom:1rem}
+.levels{display:grid;gap:.8rem;margin-top:1rem}
+.lvl{font:inherit;text-align:left;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:6px;padding:.9rem 1rem;cursor:pointer}
+.lvl b{font-family:"Patrick Hand",cursive;font-weight:400;font-size:1.5rem;display:block}
+.lvl small{color:var(--muted);font-size:.95rem}
+.lvl:hover,.lvl:focus-visible{background:var(--mark);color:#1c2a66;outline:none}
+.lvl:hover small,.lvl:focus-visible small{color:#1c2a66}
+.back{font:inherit;font-size:.95rem;color:var(--muted);background:none;border:0;padding:.2rem 0;margin-bottom:.8rem;cursor:pointer;text-decoration:underline}
+.top{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.8rem;color:var(--muted);font-size:.95rem}
+.bar{height:10px;border:2px solid var(--line);border-radius:6px;background:var(--card);overflow:hidden;margin-bottom:1rem}
+.bar i{display:block;height:100%;background:var(--mark);transition:width .3s}
+.tag{font-size:.95rem;color:var(--muted);margin:0 0 .4rem}
+.q{font-family:"Patrick Hand",cursive;font-size:1.9rem;line-height:1.25;margin:0 0 1.2rem}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem}
+.opt{font:inherit;font-size:1.15rem;font-weight:700;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:6px;padding:.75rem .5rem;cursor:pointer;min-height:3.2rem}
+.opt:hover:not(:disabled),.opt:focus-visible{background:var(--mark);color:#1c2a66;outline:none}
+.opt:disabled{cursor:default}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:var(--bad)}
+.fb{margin-top:1.1rem;padding:.9rem 1rem;border-left:6px solid var(--ok);background:var(--okbg);border-radius:4px}
+.fb.bad{border-color:var(--bad);background:var(--badbg)}
+.fb strong{display:block;font-family:"Patrick Hand",cursive;font-weight:400;font-size:1.4rem}
+.btn{font:inherit;font-weight:700;margin-top:1rem;color:#1c2a66;background:var(--mark);border:2px solid var(--line);border-radius:6px;padding:.7rem 1.4rem;cursor:pointer;box-shadow:3px 3px 0 var(--line)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn.alt{background:var(--card);color:var(--ink)}
+.row{display:flex;gap:.8rem;flex-wrap:wrap}
+.score{font-family:"Patrick Hand",cursive;font-size:4rem;line-height:1;margin:.4rem 0}
+.tip{background:var(--mark);color:#1c2a66;border-radius:4px;padding:.7rem 1rem;margin:.8rem 0 0;white-space:pre-line}
+.ex .en{font-weight:700;margin:.4rem 0}
+.ex ol{margin:.4rem 0 .6rem;padding-left:1.4rem}
+.ex li{margin:.25rem 0}
+.res{display:inline-block;border:2px solid var(--ok);background:var(--okbg);color:var(--ok);border-radius:4px;padding:.2rem .7rem;font-weight:700}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1)), pick=a=>a[R(0,a.length-1)];
+const sh=a=>{for(let k=a.length-1;k>0;k--){const j=R(0,k);[a[k],a[j]]=[a[j],a[k]]}return a};
+const n=x=>x<0?"−"+(-x):""+x, sg=x=>x<0?"− "+(-x):"+ "+x, gcd=(a,b)=>b?gcd(b,a%b):a;
+const simp=N=>{let k=1;for(let i=2;i*i<=N;i++)if(N%(i*i)===0)k=i;return[k,N/(k*k)]};
+const cf=c=>c===1?"":c, rad=(c,b)=>cf(c)+"√"+b, mult=(m,s)=>m>1?`${m}(${s})`:s;
+const frac=(c,b,d)=>{const s=rad(c,b);return d===1?s:`${s}/${d}`};
+const OPS=["<",">","≤","≥"],FLIP={"<":">",">":"<","≤":"≥","≥":"≤"};
+const U=(o,t)=>({">":`]${n(t)}, +∞[`,"≥":`[${n(t)}, +∞[`,"<":`]−∞, ${n(t)}[`,"≤":`]−∞, ${n(t)}]`})[o];
+const I=(a,lc,b,rc)=>`${lc?"[":"]"}${n(a)}, ${n(b)}${rc?"]":"["}`;
+const mk=(q,right,w,why)=>({q,right,w:sh([...new Set(w)].filter(x=>x!==right)).slice(0,3),why});
+const nz=(a,b)=>{let x;do x=R(a,b);while(!x);return x};
+const four=(q,o,t,why)=>mk(q,U(o,t),OPS.filter(x=>x!==o).map(x=>U(x,t)),why);
+
+const pf=N=>{const f=[];for(let p=2;N>1;p++)while(N%p===0){f.push(p);N/=p}return f};
+const expl=N=>{const f=pf(N),cnt={};f.forEach(p=>cnt[p]=(cnt[p]||0)+1);
+ const out=[],stay=[];Object.entries(cnt).forEach(([p,c])=>{p=+p;for(let i=0;i<Math.floor(c/2);i++)out.push(p);if(c%2)stay.push(p)});
+ const k=out.reduce((a,b)=>a*b,1),b=stay.reduce((a,b)=>a*b,1);
+ return `${N} = ${f.join(" × ")}. Cada par de fatores iguais sai uma vez da raiz: ${out.map(p=>`o par ${p}×${p} sai como ${p}`).join("; ")}. Fora da raiz fica ${out.length>1?out.join(" × ")+" = "+k:k}; dentro sobra ${b}. Logo √${N} = ${rad(k,b)}.`};
+const cm=(k,s)=>k===1?`(${s})`:`${k}(${s})`;
+const frIneq=()=>{for(let i=0;i<500;i++){
+ const [p,q]=sh([2,3,4,5,6]).slice(0,2),m=p*q/gcd(p,q),u=m/p,v=m/q,e=u-v;if(!e)continue;
+ const o=pick(OPS),t=R(-4,4),a=nz(-5,5),form=R(0,1),o2=e>0?o:FLIP[o];
+ const b=form===0?(u*a+e*t)/v:a+e*t/m;
+ if(!Number.isInteger(b)||!b||Math.abs(b)>7)continue;
+ const cs=e===1?"x":e===-1?"−x":`${n(e)}x`,s=e*t,dv=e>0?`Dividir por ${e} mantém o sentido`:`Dividir por ${n(e)} (negativo) inverte o sentido`;
+ if(form===0)return four(`Resolve: (x ${sg(a)})/${p} ${o} (x ${sg(b)})/${q}`,o2,t,`Multiplica tudo pelo mmc(${p}, ${q}) = ${m} (positivo, o sentido mantém-se): ${cm(u,"x "+sg(a))} ${o} ${cm(v,"x "+sg(b))}. Abre os parêntesis e junta os termos: ${cs} ${o} ${n(s)}. ${dv}: x ${o2} ${n(t)}.`);
+ return four(`Resolve: x/${p} ${sg(a)} ${o} x/${q} ${sg(b)}`,o2,t,`Multiplica todos os termos pelo mmc(${p}, ${q}) = ${m} (positivo, o sentido mantém-se): ${u}x ${sg(m*a)} ${o} ${v}x ${sg(m*b)}. Junta os termos: ${cs} ${o} ${n(s)}. ${dv}: x ${o2} ${n(t)}.`)}
+ return four("Resolve: x/2 + 1 ≥ x/3","≥",-6,"Multiplica tudo por 6: 3x + 6 ≥ 2x, logo x ≥ −6.")};
+const sRad=(list)=>()=>{const N=pick(list),[k,b]=simp(N);return mk(`Simplifica √${N}`,rad(k,b),[rad(b,k),rad(k+1,b),rad(k,b+1),rad(k*k,b),`√${N-1}`],expl(N))};
+const pyth=(a,b,fmtn)=>`O triângulo [ABC] é retângulo em B, com AB = ${a} cm e BC = ${b} cm. Qual é o valor de AC?`;
+const LG={f:[
+["Qual é o lugar geométrico dos pontos que distam 4 cm de um ponto O?","Circunferência de centro O e raio 4 cm",["Círculo de centro O e raio 4 cm","Mediatriz de um segmento com extremo em O","Reta que passa por O"],"Distar exatamente 4 cm de O dá só a linha: a circunferência."],
+["Qual é o lugar geométrico dos pontos equidistantes de dois pontos P e Q?","Mediatriz do segmento [PQ]",["Circunferência de diâmetro [PQ]","Reta paralela a PQ","Ponto médio de [PQ]"],"A mediatriz é a reta perpendicular a [PQ] que passa pelo seu ponto médio."],
+["Qual é o lugar geométrico dos pontos que distam do ponto O 4 cm ou menos?","Círculo de centro O e raio 4 cm",["Circunferência de centro O e raio 4 cm","Mediatriz de [OP]","Exterior da circunferência de raio 4 cm"],"“Ou menos” inclui o interior: é o círculo (com a fronteira)."]],
+m:[
+["Qual é o lugar geométrico dos pontos que distam exatamente 3 cm de uma reta r?","Duas retas paralelas a r, uma de cada lado",["Uma reta paralela a r","Circunferência de raio 3 cm","Faixa entre duas retas paralelas a r"],"Há dois lados possíveis, por isso são duas retas paralelas a r."],
+["Qual é o lugar geométrico dos pontos que distam mais de 4 cm de um ponto O?","Exterior da circunferência de centro O e raio 4 cm (sem a circunferência)",["Círculo de centro O e raio 4 cm","Circunferência de centro O e raio 4 cm","Exterior da circunferência de centro O e raio 4 cm (com a circunferência)"],"“Mais de” é desigualdade estrita: a circunferência fica de fora."],
+["Qual é o lugar geométrico dos pontos equidistantes de duas retas concorrentes r e s?","Bissetrizes dos ângulos formados por r e s",["Mediatriz de r e s","Circunferência centrada no ponto de interseção","Uma reta paralela a r"],"Cada par de ângulos opostos tem a sua bissetriz; são duas retas."]],
+d:[
+["Um ponto P dista 3 cm do centro O de uma circunferência de raio 5 cm. A que pertence P?","Ao círculo, mas não à circunferência",["À circunferência, mas não ao círculo","Aos dois","A nenhum"],"OP = 3 < 5: P é interior. Para estar na circunferência teria de ser OP = 5."],
+["Um ponto Q dista 5 cm do centro O de uma circunferência de raio 5 cm. A que pertence Q?","Ao círculo e à circunferência",["Só ao círculo","Só à circunferência","A nenhum"],"OQ = 5 = raio: está na circunferência, que também faz parte do círculo."],
+["Qual é o lugar geométrico dos pontos que distam menos de 2 cm de uma reta r?","Faixa entre duas retas paralelas a r, sem as retas",["Faixa entre duas retas paralelas a r, com as retas","Duas retas paralelas a r","Círculo de raio 2 cm"],"“Menos de” é estrito: as retas a 2 cm ficam de fora."]]};
+const P=[[3,4,5],[5,12,13],[6,8,10],[8,15,17],[9,12,15],[7,24,25]];
+
+const G={
+A:{f:()=>{if(Math.random()<.5){const a=R(-6,3),b=a+R(2,7),l=Math.random()<.5,r=Math.random()<.5;
+ return mk(`Escreve na forma de intervalo: {x ∈ ℝ : ${n(a)} ${l?"<":"≤"} x ${r?"<":"≤"} ${n(b)}}`,I(a,!l,b,!r),[I(a,l,b,!r),I(a,!l,b,r),I(a,l,b,r)],`< é aberto e ≤ é fechado: em ${n(a)} o colchete é ${l?"aberto":"fechado"}; em ${n(b)} é ${r?"aberto":"fechado"}.`)}
+ const o=pick(OPS),a=R(-6,6);return four(`Escreve na forma de intervalo: {x ∈ ℝ : x ${o} ${n(a)}}`,o,a,"Estrita (<, >) → aberto; larga (≤, ≥) → fechado. ∞ tem sempre colchete aberto.")},
+ m:()=>{const a=R(-6,0),c=a+R(1,3),b=c+R(1,4),d=b+R(1,4),al=Math.random()<.5,ar=Math.random()<.5,bl=Math.random()<.5,br=Math.random()<.5;
+ const A=I(a,al,b,ar),B=I(c,bl,d,br);
+ if(Math.random()<.5)return mk(`Sendo A = ${A} e B = ${B}, qual é A ∩ B?`,I(c,bl,b,ar),[I(c,!bl,b,ar),I(c,bl,b,!ar),I(a,al,d,br)],`A interseção começa no maior extremo esquerdo (${n(c)}) e acaba no menor extremo direito (${n(b)}), com o colchete de quem “manda” em cada extremo.`);
+ return mk(`Sendo A = ${A} e B = ${B}, qual é A ∪ B?`,I(a,al,d,br),[I(a,!al,d,br),I(a,al,d,!br),I(c,bl,b,ar)],`Como se sobrepõem, a reunião vai do menor extremo (${n(a)}) ao maior (${n(d)}), com o colchete do intervalo que o contém.`)},
+ d:()=>{const k=R(2,4),t=R(-4,5),m=R(1,9),c=m-k*t,o=pick(OPS);
+ return four(`Resolve e escreve o conjunto-solução na forma de intervalo: −${k}x + ${m} ${o} ${n(c)}`,FLIP[o],t,`−${k}x ${o} ${n(c-m)}. Dividir por −${k} inverte o sentido: x ${FLIP[o]} ${n(t)}.`)}},
+B1:{f:sRad([8,12,18,20,27,45,50]),m:sRad([32,72,75,80,98,108,150,162,200,245]),
+ d:()=>{if(Math.random()<.5){const N=pick([8,12,18,20,27,45,50]),[k,b]=simp(N),m=R(2,5);
+  return mk(`Simplifica ${m}√${N}`,rad(m*k,b),[rad(m*k*k,b),rad(m+k,b),rad(m*k,b+1),rad(m*b,k),`${m*k}`],`${expl(N)} Multiplicando por ${m}: ${m} × ${k}√${b} = ${m*k}√${b}.`)}
+  const m=R(2,6),b=pick([2,3,5,6,7]);return mk(`Escreve ${m}√${b} na forma √N.`,`√${m*m*b}`,[`√${m*b}`,`√${m+b}`,`√${m*m+b}`,`√${m*m*b*b}`],`${m} = √${m*m}, logo ${m}√${b} = √${m*m} × √${b} = √${m*m*b}.`)}},
+B2:{f:()=>{const b=pick([2,3,5,7]),a=R(2,9),g=gcd(a,b),r=frac(a/g,b,b/g);
+  return mk(`Racionaliza o denominador de ${a}/√${b}`,r,[`${a}√${b}`,`${a}/${b}`,`${a+b}√${b}`,`${a}√${b}/${b+1}`],`Multiplica em cima e em baixo por √${b}: ${a}√${b}/${b}. Depois simplifica.`)},
+ m:()=>{const k=R(2,4),b=pick([2,3,5]),a=R(2,12),g=gcd(a,k*b),r=frac(a/g,b,k*b/g);
+  return mk(`Racionaliza o denominador de ${a}/(${k}√${b})`,r,[`${a}√${b}/${k}`,`${a}√${b}/${b}`,`${a}/${k*b}`,`${k}√${b}/${a}`],`Multiplica por √${b}: ${a}√${b}/${k*b}. Simplifica a fração.`)},
+ d:()=>{const [b,c]=pick([[3,1],[5,1],[6,1],[6,2],[7,1],[7,2],[10,1]]),d=b-c*c,m=R(1,3),a=d*m,s=Math.random()<.5,sa=s?"+":"−",op=s?"−":"+";
+  return mk(`Racionaliza o denominador de ${a}/(√${b} ${sa} ${c})`,mult(m,`√${b} ${op} ${c}`),[mult(m,`√${b} ${sa} ${c}`),`${a}(√${b} ${op} ${c})`,`${a}(√${b} ${op} ${c})/${b+c*c}`,`${a}(√${b} ${sa} ${c})/${d}`],`Multiplica pelo conjugado (√${b} ${op} ${c}). No denominador: ${b} − ${c*c} = ${d}, e ${a} ÷ ${d} = ${m}.`)}},
+B3:{f:()=>{let p,q,r,t;do{p=R(2,7);q=R(1,5);r=R(1,4);t=p+q-r}while(t<1);const b=pick([2,3,5,6,7]);
+  return mk(`Calcula: ${rad(p,b)} + ${rad(q,b)} − ${rad(r,b)}`,rad(t,b),[rad(p+q+r,b),`${t}`,rad(t,b+1),rad(t+2,b)],`Radicais iguais: somam-se os coeficientes: ${p} + ${q} − ${r} = ${t}.`)},
+ m:()=>{const b=pick([2,3,5]),plus=Math.random()<.5;let k1=R(2,6),k2=R(1,5);while(k1===k2)k2=R(1,5);if(!plus&&k1<k2)[k1,k2]=[k2,k1];
+  const n1=k1*k1*b,n2=k2*k2*b,t=plus?k1+k2:k1-k2,o=plus?"+":"−";
+  return mk(`Calcula e simplifica: √${n1} ${o} √${n2}`,rad(t,b),[`√${plus?n1+n2:n1-n2}`,rad(k1*k2,b),rad(t,b*2),`${t}`,rad(t+1,b)],`√${n1} = ${k1}√${b} e √${n2} = ${k2}√${b}. Logo ${k1} ${o} ${k2} = ${t}, ou seja ${t===1?"":t}√${b}.`)},
+ d:()=>{const b=pick([2,3,5,6,7]),c=R(1,4);
+  if(Math.random()<.5)return mk(`Calcula: (√${b} + ${c})² − ${2*c}√${b}`,`${b+c*c}`,[`${b+c*c} + ${2*c}√${b}`,`${b+c}`,`${b*c*c}`,`${b-c*c}`,`${b+c*c+2*c}`],`Caso notável: ${b} + ${2*c}√${b} + ${c*c}. Os termos em √${b} cancelam: ${b+c*c}.`);
+  return mk(`Calcula: √${b}(√${b} + ${c}) − ${c}√${b}`,`${b}`,[`${b+c}`,`${b} + ${c}√${b}`,`${b+c*c}`,`${b*c}`],`Distributiva: ${b} + ${c}√${b} − ${c}√${b} = ${b}.`)}},
+C:{f:()=>{const a=nz(-6,6),t=R(-5,6),b=a+t,o=pick(OPS);return four(`Resolve: x ${sg(a)} ${o} ${n(b)}`,o,t,`${a>0?"Subtrai "+a:"Soma "+(-a)} aos dois lados: x ${o} ${n(t)}.`)},
+ m:()=>{const k=R(2,5),t=R(-5,5),a=nz(-7,7),c=k*t+a,o=pick(OPS);return four(`Resolve: ${k}x ${sg(a)} ${o} ${n(c)}`,o,t,`${k}x ${o} ${n(c-a)}. Dividindo por ${k} (positivo) o sentido mantém-se: x ${o} ${n(t)}.`)},
+ d:()=>{if(Math.random()<.5)return frIneq();let p=R(2,5),r=R(1,4);while(p===r)r=R(1,4);const q=nz(-3,3),t=R(-4,4),s=p*q+(p-r)*t,o=pick(OPS),o2=p>r?o:FLIP[o],e=p-r,cs=e===1?"x":e===-1?"−x":`${n(e)}x`;
+  return four(`Resolve: ${p}(x ${sg(q)}) ${o} ${r===1?"x":r+"x"}${s?" "+sg(s):""}`,o2,t,`Abre o parêntesis e junta os termos em x: ${cs} ${o} ${n(s-p*q)}. ${e>0?"Dividir por "+e+" mantém o sentido":"Dividir por "+n(e)+" (negativo) inverte o sentido"}: x ${o2} ${n(t)}.`)}},
+D:{f:()=>{if(Math.random()<.5){const [a,b,c]=pick(P);return mk(pyth(a,b),`${c} cm`,[`${a+b} cm`,`${Math.abs(b-a)} cm`,`${c+1} cm`,`${c-1} cm`],`AC² = ${a}² + ${b}² = ${a*a+b*b}, logo AC = ${c} cm.`)}const x=pick(LG.f);return mk(...x)},
+ m:()=>{if(Math.random()<.5){const [a,b]=pick([[2,3],[2,5],[3,5],[4,5],[1,4]]),N=a*a+b*b;return mk(pyth(a,b),`√${N} cm`,[`√${a+b} cm`,`${a+b} cm`,`√${N+1} cm`,`√${N-1} cm`],`AC² = ${a}² + ${b}² = ${N}, logo AC = √${N} cm.`)}return mk(...pick(LG.m))},
+ d:()=>{if(Math.random()<.5){const [a,b]=pick([[6,3],[4,2],[8,4],[6,2],[9,3],[10,5],[12,6]]),N=a*a+b*b,[k,s]=simp(N);return mk(pyth(a,b)+" Escreve o resultado simplificado.",`${k}√${s} cm`,[`${s}√${k} cm`,`${k*k}√${s} cm`,`${k+1}√${s} cm`,`${k}√${s+1} cm`],`AC² = ${a*a} + ${b*b} = ${N} = ${k*k} × ${s}, logo AC = ${k}√${s} cm.`)}return mk(...pick(LG.d))}}
+};
+
+const T={
+A:{name:"Intervalos de números reais",tip:"< e > → colchete aberto; ≤ e ≥ → colchete fechado. O infinito tem sempre colchete aberto.\nInterseção (∩): só ficam os números que estão nos dois intervalos.\nUnião (∪): ficam os números que estão em pelo menos um dos intervalos. Se os intervalos se sobrepõem, a união é um só intervalo: do menor extremo esquerdo ao maior extremo direito, com o colchete do intervalo a que esse extremo pertence. Se não se sobrepõem, a união escreve-se com os dois intervalos separados por ∪.",ex:[
+ ["Escreve {x ∈ ℝ : −2 ≤ x < 5} na forma de intervalo.",["−2 ≤ x: o −2 está incluído, logo o colchete é fechado: [−2.","x < 5: o 5 não está incluído, logo o colchete é aberto: 5[."],"[−2, 5["],
+ ["Calcula ]−3, 2] ∩ [0, 6[.",["A interseção são os números que estão nos dois intervalos.","Começa no maior dos extremos esquerdos: 0 (incluído em [0, 6[).","Acaba no menor dos extremos direitos: 2 (incluído em ]−3, 2])."],"[0, 2]"],
+ ["Calcula ]−3, 2] ∪ [0, 6[.",["A união são os números que estão num intervalo ou no outro (ou nos dois).","Os intervalos sobrepõem-se (entre 0 e 2), por isso a união é um só intervalo.","Extremo esquerdo: o menor é −3, que vem de ]−3, 2] (aberto): ]−3.","Extremo direito: o maior é 6, que vem de [0, 6[ (aberto): 6[."],"]−3, 6["],
+ ["Calcula ]−∞, 1[ ∪ [3, 5].",["Os intervalos não se sobrepõem: os números entre 1 e 3 não estão em nenhum deles.","Por isso a união não se pode escrever como um só intervalo: mantêm-se os dois, separados por ∪."],"]−∞, 1[ ∪ [3, 5]"]]},
+B1:{name:"Simplificação de raízes",tip:"1) Decompõe o número em fatores primos (2, 3, 5, 7…).\n2) Cada par de fatores iguais sai uma vez da raiz.\n3) Os fatores que ficam sem par ficam dentro da raiz.\n4) Multiplica o que saiu para fora da raiz.",ex:[
+ ["Simplifica √20.",["Decompõe 20: 20 = 2 × 2 × 5.","O 2 aparece duas vezes: forma um par, por isso sai um 2 da raiz.","Sobrou o 5, que fica dentro da raiz.","Logo √20 = 2√5."],"2√5"],
+ ["Simplifica √72.",["Decompõe 72: 72 = 2 × 2 × 2 × 3 × 3.","Os dois primeiros 2 formam um par: sai um 2. Os dois 3 formam um par: sai um 3.","Sobrou um 2, que fica dentro da raiz.","Fora da raiz multiplica-se o que saiu: 2 × 3 = 6. Logo √72 = 6√2."],"6√2"],
+ ["Simplifica 3√20.",["Já vimos que √20 = 2√5.","Multiplica o que está fora: 3 × 2 = 6. Logo 3√20 = 6√5."],"6√5"]]},
+B2:{name:"Racionalização de denominadores",tip:"Se o denominador é √b, multiplica por √b/√b. Se é uma soma ou diferença, multiplica pelo conjugado.",ex:[
+ ["Racionaliza 6/√3.",["Multiplica numerador e denominador por √3.","6√3 / (√3 × √3) = 6√3 / 3.","Simplifica: 2√3."],"2√3"],
+ ["Racionaliza 4/(√5 − 1).",["O conjugado de √5 − 1 é √5 + 1.","Denominador: (√5 − 1)(√5 + 1) = 5 − 1 = 4.","4(√5 + 1)/4 = √5 + 1."],"√5 + 1"]]},
+B3:{name:"Operações com raízes",tip:"Só se somam radicais iguais (depois de simplificar). Nos produtos notáveis, os termos com raiz podem cancelar.",ex:[
+ ["Calcula √12 + √27 − √3.",["Simplifica: √12 = 2√3 e √27 = 3√3.","2√3 + 3√3 − √3 = (2 + 3 − 1)√3."],"4√3"],
+ ["Calcula (√3 + 2)² − 4√3.",["Caso notável: (√3)² + 2×√3×2 + 2² = 3 + 4√3 + 4.","Subtrai 4√3: os termos com raiz cancelam. Fica 3 + 4 = 7."],"7"]]},
+C:{name:"Inequações do 1.º grau",tip:"Resolve como uma equação, mas ao multiplicar ou dividir por um número negativo o sentido da desigualdade inverte-se.\nCom frações:\n1) Calcula o mmc dos denominadores.\n2) Multiplica todos os termos, dos dois lados, por esse mmc. É positivo, por isso o sentido mantém-se.\n3) Simplifica as frações e abre os parêntesis (atenção ao sinal − antes de um parêntesis).\n4) Resolve como uma inequação normal.",ex:[
+ ["Resolve 3x − 5 ≤ 7.",["Soma 5 aos dois lados: 3x ≤ 12.","Divide por 3 (positivo, o sentido mantém-se): x ≤ 4."],"]−∞, 4]"],
+ ["Resolve 4 − 3(x − 2) > 2x + 5.",["Abre o parêntesis: 4 − 3x + 6 > 2x + 5, ou seja 10 − 3x > 2x + 5.","Junta os termos: −5x > −5.","Divide por −5 (negativo) e inverte o sentido: x < 1."],"]−∞, 1["],
+ ["Resolve (2x − 1)/3 − x/2 < 1.",["Denominadores 3 e 2: mmc(3, 2) = 6. Multiplica todos os termos por 6 (positivo, o sentido mantém-se): 6 × (2x − 1)/3 − 6 × x/2 < 6 × 1.","Simplifica cada fração: 2(2x − 1) − 3x < 6.","Abre o parêntesis: 4x − 2 − 3x < 6.","Junta os termos: x − 2 < 6, logo x < 8."],"]−∞, 8["],
+ ["Resolve x/3 − (x + 1)/2 ≤ 1.",["mmc(3, 2) = 6. Multiplica tudo por 6: 2x − 3(x + 1) ≤ 6.","Abre o parêntesis (o − multiplica os dois termos): 2x − 3x − 3 ≤ 6.","Junta os termos: −x − 3 ≤ 6, ou seja −x ≤ 9.","Multiplica por −1 (negativo) e inverte o sentido: x ≥ −9."],"[−9, +∞["]]},
+D:{name:"Geometria",tip:"Pitágoras: hipotenusa² = cateto² + cateto². Nos lugares geométricos, repara se a fronteira está incluída (≤) ou não (<).",ex:[
+ ["O triângulo [ABC] é retângulo em B, com AB = 6 cm e BC = 3 cm. Determina AC.",["AC é a hipotenusa: AC² = 6² + 3² = 36 + 9 = 45.","AC = √45 = √9 × √5 = 3√5."],"3√5 cm"],
+ ["Um ponto P dista 3 cm do centro de uma circunferência de raio 5 cm. Pertence ao círculo? E à circunferência?",["3 < 5, logo P é interior à circunferência: pertence ao círculo.","Para pertencer à circunferência teria de distar exatamente 5 cm: não pertence."],"Círculo: sim · Circunferência: não"]]}
+};
+const MENU=[["A","A"],["B","B"],["C","C"],["D","D"]];
+const SUBS={B:["B1","B2","B3"]};
+const TOPNAME={...Object.fromEntries(Object.entries(T).map(([k,v])=>[k,v.name])),B:"Operações com números reais"};
+const LV={f:["Fácil","Aplicar a regra diretamente"],m:["Médio","Mais passos e números menos redondos"],d:["Difícil","Várias regras juntas e armadilhas"]};
+const ROUND=8;
+const app=document.getElementById("app");
+let topic,lv,list,idx,score,locked,from;
+
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e};
+function head(sub){app.replaceChildren();const h=el("h1");h.append("Desafio de ",el("span","","Matemática"));app.append(h,el("p","sub",sub||"9.º ano"))}
+function back(fn){const b=el("button","back","← Voltar");b.onclick=fn;app.append(b)}
+function menu(title,items,fn){const c=el("div","card");c.append(el("h2","",title));const box=el("div","levels");
+ items.forEach(([label,small,val])=>{const b=el("button","lvl");b.append(el("b","",label));if(small)b.append(el("small","",small));b.onclick=()=>fn(val);box.append(b)});c.append(box);app.append(c)}
+
+function home(){head("Radicais, intervalos, inequações e geometria");
+ menu("O que te apetece estudar hoje?",[["A) "+TOPNAME.A,"",   "A"],["B) "+TOPNAME.B,"3 subtemas","B"],["C) "+TOPNAME.C,"","C"],["D) "+TOPNAME.D,"","D"]],k=>{SUBS[k]?subMenu(k):(topic=k,from=home,levels())})}
+function subMenu(k){head(TOPNAME[k]);back(home);
+ menu("Qual o subtema?",SUBS[k].map(s=>[s+") "+T[s].name,"",s]),s=>{topic=s;from=()=>subMenu(k);levels()})}
+function levels(){head(T[topic].name);back(from);
+ menu("Qual o nível de dificuldade que queres?",Object.entries(LV).map(([k,[a,b]])=>[a,b,k]),k=>{lv=k;intro()})}
+function intro(){head(T[topic].name+" · "+LV[lv][0]);back(levels);
+ const c=el("div","card");c.append(el("h2","","Antes de jogar: como se faz"));
+ const t=el("p","tip","Regra: "+T[topic].tip);c.append(t);app.append(c);
+ T[topic].ex.forEach(([en,steps,res],i)=>{const e=el("div","card ex");e.append(el("h3","","Exercício resolvido "+(i+1)),el("p","en",en));
+  const ol=el("ol");steps.forEach(s=>ol.append(el("li","",s)));e.append(ol);const r=el("span","res","Resultado: "+res);e.append(r);app.append(e)});
+ const b=el("button","btn","Já percebi, começar o jogo");b.onclick=start;app.append(b);b.focus()}
+
+function start(){list=[];const seen=new Set();for(let i=0;i<80&&list.length<ROUND;i++){const g=G[topic][lv]();if(!seen.has(g.q)){seen.add(g.q);list.push(g)}}idx=0;score=0;show()}
+function show(){locked=false;const g=list[idx];app.replaceChildren();
+ const top=el("div","top");top.append(el("span","",T[topic].name+" · "+LV[lv][0]+" · "+(idx+1)+"/"+list.length),el("span","","Pontos: "+score));
+ const bar=el("div","bar"),f=el("i");f.style.width=(idx/list.length*100)+"%";bar.append(f);
+ const card=el("div","card");card.append(el("p","tag","Escolhe a única opção correta"),el("p","q",g.q));
+ const o=el("div","opts");sh([g.right,...g.w]).forEach(t=>{const b=el("button","opt",t);b.onclick=()=>answer(b,t===g.right,o,card,g);o.append(b)});
+ card.append(o);app.append(top,bar,card)}
+function answer(btn,ok,o,card,g){if(locked)return;locked=true;if(ok)score++;
+ [...o.children].forEach(b=>{b.disabled=true;if(b.textContent===g.right)b.classList.add("ok")});if(!ok)btn.classList.add("bad");
+ const fb=el("div","fb"+(ok?"":" bad"));fb.append(el("strong","",ok?"Certo!":"Não é bem assim."),el("span","",(ok?"":"Resposta certa: "+g.right+". ")+g.why));
+ const nx=el("button","btn",idx+1<list.length?"Próxima pergunta":"Ver resultado");nx.onclick=()=>{idx++;idx<list.length?show():finish()};
+ card.append(fb,nx);nx.focus()}
+function finish(){head();const p=score/list.length;
+ const msg=p===1?"Perfeito! Dominas este tema neste nível.":p>=.75?"Muito bom! Só falta afinar alguns detalhes.":p>=.5?"Estás no bom caminho. Repete para consolidar.":"Revê os exercícios resolvidos e tenta outra vez.";
+ const c=el("div","card");c.append(el("h2","",T[topic].name+" · "+LV[lv][0]),el("div","score",score+" / "+list.length),el("p","",msg));
+ const r=el("div","row");[["Jogar outra vez",start,""],["Mudar de dificuldade",levels,"alt"],["Escolher outro tema",home,"alt"]].forEach(([t,f,cl])=>{const b=el("button","btn "+cl,t);b.onclick=f;r.append(b)});
+ c.append(r);app.append(c)}
+home();
+</script>
+</body>
+</html>
